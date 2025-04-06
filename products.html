@@ -16,6 +16,9 @@
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="styles/custom.css">
+
+    <!-- Load products data -->
+    <script src="admin/js/products.js"></script>
     
     <!-- Tailwind Config -->
     <script>
@@ -83,41 +86,27 @@
                         <h2 class="text-lg font-semibold mb-4">瀏覽方式</h2>
                         <ul class="space-y-2">
                             <li>
-                                <a href="products.html" class="text-primary font-medium">所有產品</a>
+                                <a href="#" onclick="filterByCollection(''); return false;" class="text-primary font-medium">所有產品</a>
                             </li>
                             <li>
-                                <a href="products.html?category=desktop" class="text-gray-600 hover:text-primary">Desktop</a>
+                                <a href="#" onclick="filterByCollection('Desktop'); return false;" class="text-gray-600 hover:text-primary">Desktop</a>
                             </li>
                             <li>
-                                <a href="products.html?category=laptop" class="text-gray-600 hover:text-primary">Laptop</a>
+                                <a href="#" onclick="filterByCollection('Laptop'); return false;" class="text-gray-600 hover:text-primary">Laptop</a>
                             </li>
                             <li>
-                                <a href="products.html?category=microsoft" class="text-gray-600 hover:text-primary">Microsoft</a>
+                                <a href="#" onclick="filterByCollection('Microsoft'); return false;" class="text-gray-600 hover:text-primary">Microsoft</a>
                             </li>
                             <li>
-                                <a href="products.html?category=pad" class="text-gray-600 hover:text-primary">Pad</a>
+                                <a href="#" onclick="filterByCollection('Pad'); return false;" class="text-gray-600 hover:text-primary">Pad</a>
                             </li>
                             <li>
-                                <a href="products.html?category=server" class="text-gray-600 hover:text-primary">Server</a>
+                                <a href="#" onclick="filterByCollection('Server'); return false;" class="text-gray-600 hover:text-primary">Server</a>
                             </li>
                             <li>
-                                <a href="products.html?category=ups" class="text-gray-600 hover:text-primary">UPS</a>
+                                <a href="#" onclick="filterByCollection('UPS'); return false;" class="text-gray-600 hover:text-primary">UPS</a>
                             </li>
                         </ul>
-
-                        <div class="mt-8">
-                            <h2 class="text-lg font-semibold mb-4">篩選方式</h2>
-                            <div class="space-y-4">
-                                <div>
-                                    <label class="text-sm text-gray-600">價格</label>
-                                    <div class="flex items-center space-x-2 mt-2">
-                                        <input type="text" placeholder="HK$" class="w-24 px-2 py-1 border rounded">
-                                        <span>-</span>
-                                        <input type="text" placeholder="HK$" class="w-24 px-2 py-1 border rounded">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
 
@@ -125,85 +114,20 @@
                 <div class="md:col-span-3">
                     <div class="bg-white rounded-lg shadow p-6">
                         <div class="flex justify-between items-center mb-6">
-                            <h1 class="text-2xl font-bold">所有產品</h1>
+                            <h1 id="categoryTitle" class="text-2xl font-bold">所有產品</h1>
                             <div class="flex items-center space-x-4">
-                                <span class="text-sm text-gray-600">30 項產品</span>
-                                <select class="border rounded px-2 py-1">
-                                    <option>推薦</option>
-                                    <option>價格: 低到高</option>
-                                    <option>價格: 高到低</option>
+                                <span id="productCount" class="text-sm text-gray-600">0 項產品</span>
+                                <select id="sortOrder" onchange="sortProducts()" class="border rounded px-2 py-1">
+                                    <option value="recommended">推薦</option>
+                                    <option value="priceAsc">價格: 低到高</option>
+                                    <option value="priceDesc">價格: 高到低</option>
                                 </select>
                             </div>
                         </div>
 
                         <!-- Product Grid -->
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                            <!-- Desktop Products -->
-                            <div class="product-card" data-category="desktop">
-                                <a href="product-detail.html?id=optiplex-7020-plus" class="block">
-                                    <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-                                        <img src="images/optiplex-7020.jpg" alt="OptiPlex 7020" class="w-full h-48 object-cover">
-                                        <div class="p-4">
-                                            <h3 class="text-lg font-semibold mb-2">OptiPlex 7020Micro Form Factor Plus</h3>
-                                            <p class="text-primary font-bold">HK$7,660.00</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-
-                            <div class="product-card" data-category="desktop">
-                                <a href="product-detail.html?id=optiplex-7020" class="block">
-                                    <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-                                        <img src="images/optiplex-7020.jpg" alt="OptiPlex 7020" class="w-full h-48 object-cover">
-                                        <div class="p-4">
-                                            <h3 class="text-lg font-semibold mb-2">OptiPlex 7020Micro Form Factor</h3>
-                                            <p class="text-primary font-bold">HK$5,890.00</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-
-                            <!-- Laptop Products -->
-                            <div class="product-card" data-category="laptop">
-                                <a href="product-detail.html?id=latitude-3550" class="block">
-                                    <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-                                        <img src="images/latitude-3550.jpg" alt="Latitude 3550" class="w-full h-48 object-cover">
-                                        <div class="p-4">
-                                            <h3 class="text-lg font-semibold mb-2">DELL Latitude 3550 Laptop, 15"inch</h3>
-                                            <p class="text-primary font-bold">HK$7,399.00</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-
-                            <!-- Microsoft Products -->
-                            <div class="product-card" data-category="microsoft">
-                                <a href="product-detail.html?id=surface-pro-9" class="block">
-                                    <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-                                        <img src="images/surface-pro-9.jpg" alt="Surface Pro 9" class="w-full h-48 object-cover">
-                                        <div class="p-4">
-                                            <h3 class="text-lg font-semibold mb-2">Surface Pro 9</h3>
-                                            <div class="flex items-center space-x-2">
-                                                <span class="line-through text-gray-500">HK$13,988.00</span>
-                                                <span class="text-primary font-bold">HK$13,588.00</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-
-                            <!-- More products... -->
-                        </div>
-
-                        <!-- Pagination -->
-                        <div class="mt-8 flex justify-center">
-                            <nav class="flex items-center space-x-2">
-                                <a href="#" class="px-3 py-1 rounded border text-gray-600 hover:bg-primary hover:text-white">1</a>
-                                <a href="#" class="px-3 py-1 rounded border text-gray-600 hover:bg-primary hover:text-white">2</a>
-                                <a href="#" class="px-3 py-1 rounded border text-gray-600 hover:bg-primary hover:text-white">3</a>
-                                <span class="px-3 py-1">...</span>
-                                <a href="#" class="px-3 py-1 rounded border text-gray-600 hover:bg-primary hover:text-white">10</a>
-                            </nav>
+                        <div id="productGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <!-- Products will be dynamically inserted here -->
                         </div>
                     </div>
                 </div>
@@ -254,44 +178,214 @@
         </div>
     </footer>
 
-    <!-- JavaScript for category filtering -->
+    <!-- Product Detail Modal -->
+    <div id="productModal" class="fixed inset-0 bg-gray-500 bg-opacity-75 hidden z-50">
+        <div class="flex items-center justify-center min-h-screen">
+            <div class="bg-white rounded-lg max-w-4xl w-full mx-4">
+                <div class="flex justify-between items-center p-6 border-b">
+                    <h2 id="modalTitle" class="text-2xl font-bold text-gray-900"></h2>
+                    <button onclick="closeProductModal()" class="text-gray-400 hover:text-gray-500">
+                        <span class="sr-only">Close</span>
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="p-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                            <img id="modalImage" class="w-full h-auto rounded-lg" src="" alt="">
+                        </div>
+                        <div>
+                            <div class="mb-6">
+                                <h3 class="text-lg font-medium text-gray-900 mb-2">產品描述</h3>
+                                <p id="modalDescription" class="text-gray-600"></p>
+                            </div>
+                            <div class="mb-6">
+                                <h3 class="text-lg font-medium text-gray-900 mb-2">產品詳情</h3>
+                                <dl class="space-y-3">
+                                    <div class="flex justify-between">
+                                        <dt class="text-gray-500">品牌</dt>
+                                        <dd id="modalBrand" class="text-gray-900 font-medium"></dd>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <dt class="text-gray-500">系列</dt>
+                                        <dd id="modalCollection" class="text-gray-900 font-medium"></dd>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <dt class="text-gray-500">價格</dt>
+                                        <dd id="modalPrice" class="text-gray-900 font-medium"></dd>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <dt class="text-gray-500">庫存狀態</dt>
+                                        <dd id="modalInventory" class="text-gray-900 font-medium"></dd>
+                                    </div>
+                                </dl>
+                            </div>
+                            <div class="mt-8">
+                                <a href="contact.html" class="w-full bg-indigo-600 text-white py-3 px-4 rounded-md hover:bg-indigo-700 flex items-center justify-center">
+                                    <span>聯繫我們了解更多</span>
+                                    <svg class="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Get the current category from URL parameters
-            const urlParams = new URLSearchParams(window.location.search);
-            const currentCategory = urlParams.get('category');
-            
-            // Get all category links and product cards
-            const categoryLinks = document.querySelectorAll('a[href^="products.html"]');
-            const productCards = document.querySelectorAll('.product-card');
-            const categoryTitle = document.querySelector('h1');
-            
-            // If there's a category parameter, update the UI
-            if (currentCategory) {
-                // Update title
-                categoryTitle.textContent = currentCategory.charAt(0).toUpperCase() + currentCategory.slice(1);
-                
-                // Update active link
-                categoryLinks.forEach(link => {
-                    if (link.href.includes(currentCategory)) {
-                        link.classList.add('text-primary', 'font-medium');
-                        link.classList.remove('text-gray-600');
+        // Load and display products
+        function loadProducts() {
+            const products = JSON.parse(localStorage.getItem('products')) || initialProducts;
+            const visibleProducts = products.filter(p => p.visible);
+            displayProducts(visibleProducts);
+        }
+
+        // Display products in grid
+        function displayProducts(products) {
+            const grid = document.getElementById('productGrid');
+            const productCount = document.getElementById('productCount');
+            grid.innerHTML = '';
+            productCount.textContent = `${products.length} 項產品`;
+
+            products.forEach(product => {
+                // Calculate discount price
+                let finalPrice = product.price;
+                if (product.discountValue > 0) {
+                    if (product.discountMode === 'PERCENT') {
+                        finalPrice = product.price * (1 - product.discountValue / 100);
                     } else {
-                        link.classList.remove('text-primary', 'font-medium');
-                        link.classList.add('text-gray-600');
+                        finalPrice = product.price - product.discountValue;
                     }
-                });
-                
-                // Filter products
-                productCards.forEach(card => {
-                    if (card.dataset.category === currentCategory) {
-                        card.style.display = '';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
+                }
+
+                const productCard = document.createElement('div');
+                productCard.className = 'bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow cursor-pointer';
+                productCard.onclick = () => showProductModal(product);
+                productCard.innerHTML = `
+                    <div>
+                        <img src="${getProductImage(product.id)}" 
+                             alt="${product.name}" 
+                             class="w-full h-48 object-cover"
+                             onerror="this.src='images/no-image.jpg'">
+                        <div class="p-4">
+                            <h3 class="text-lg font-semibold mb-2">${product.name}</h3>
+                            ${product.discountValue > 0 ? 
+                                `<div class="flex items-center space-x-2">
+                                    <span class="line-through text-gray-500">HK$${product.price.toFixed(2)}</span>
+                                    <span class="text-primary font-bold">HK$${finalPrice.toFixed(2)}</span>
+                                </div>` :
+                                `<p class="text-primary font-bold">HK$${product.price.toFixed(2)}</p>`
+                            }
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(productCard);
+            });
+        }
+
+        // Filter products by collection
+        function filterByCollection(collection) {
+            const products = JSON.parse(localStorage.getItem('products')) || initialProducts;
+            let filteredProducts = products.filter(p => p.visible);
+            
+            if (collection) {
+                filteredProducts = filteredProducts.filter(p => p.collection === collection);
+                document.getElementById('categoryTitle').textContent = collection;
+            } else {
+                document.getElementById('categoryTitle').textContent = '所有產品';
             }
-        });
+
+            // Update active link styles
+            document.querySelectorAll('.space-y-2 a').forEach(link => {
+                if ((collection === '' && link.textContent === '所有產品') || 
+                    link.textContent === collection) {
+                    link.className = 'text-primary font-medium';
+                } else {
+                    link.className = 'text-gray-600 hover:text-primary';
+                }
+            });
+
+            displayProducts(filteredProducts);
+        }
+
+        // Sort products
+        function sortProducts() {
+            const sortOrder = document.getElementById('sortOrder').value;
+            const products = JSON.parse(localStorage.getItem('products')) || initialProducts;
+            let visibleProducts = products.filter(p => p.visible);
+
+            switch (sortOrder) {
+                case 'priceAsc':
+                    visibleProducts.sort((a, b) => a.price - b.price);
+                    break;
+                case 'priceDesc':
+                    visibleProducts.sort((a, b) => b.price - a.price);
+                    break;
+                default:
+                    visibleProducts.sort((a, b) => a.id.localeCompare(b.id));
+            }
+
+            displayProducts(visibleProducts);
+        }
+
+        // Show product modal
+        function showProductModal(product) {
+            const modal = document.getElementById('productModal');
+            document.getElementById('modalTitle').textContent = product.name;
+            document.getElementById('modalDescription').textContent = stripHtmlTags(product.description);
+            document.getElementById('modalBrand').textContent = product.brand;
+            document.getElementById('modalCollection').textContent = product.collection;
+            
+            // Calculate and display price with discount
+            let displayPrice = product.price;
+            if (product.discountValue > 0) {
+                if (product.discountMode === 'PERCENT') {
+                    displayPrice = product.price * (1 - product.discountValue / 100);
+                } else {
+                    displayPrice = product.price - product.discountValue;
+                }
+                document.getElementById('modalPrice').innerHTML = `
+                    <span class="text-red-600">HK$${displayPrice.toFixed(2)}</span>
+                    <span class="ml-2 text-sm text-gray-500 line-through">HK$${product.price.toFixed(2)}</span>
+                `;
+            } else {
+                document.getElementById('modalPrice').textContent = `HK$${displayPrice.toFixed(2)}`;
+            }
+            
+            document.getElementById('modalInventory').textContent = product.inventory === 'InStock' ? '現貨' : '缺貨';
+            document.getElementById('modalImage').src = getProductImage(product.id);
+            modal.classList.remove('hidden');
+        }
+
+        // Strip HTML tags from text
+        function stripHtmlTags(html) {
+            if (!html) return '';
+            return html.replace(/<\/?[^>]+(>|$)/g, '');
+        }
+
+        // Close product modal
+        function closeProductModal() {
+            document.getElementById('productModal').classList.add('hidden');
+        }
+
+        // Get product image with fallback
+        function getProductImage(productId) {
+            try {
+                const images = JSON.parse(localStorage.getItem(`product_images_${productId}`)) || [];
+                return images.length > 0 ? images[0] : 'images/no-image.jpg';
+            } catch (error) {
+                console.error('Error loading product image:', error);
+                return 'images/no-image.jpg';
+            }
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', loadProducts);
     </script>
 </body>
 </html> 

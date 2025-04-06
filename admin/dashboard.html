@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Broker Power</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="js/products.js"></script>
+    <script src="js/upload.js"></script>
+</head>
+<body class="bg-gray-100">
+    <div class="min-h-screen">
+        <!-- Header -->
+        <header class="bg-white shadow">
+            <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+                <h1 class="text-3xl font-bold text-gray-900">Product Management</h1>
+                <button onclick="logout()" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                    Logout
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+            <!-- Tabs -->
+            <div class="mb-4 border-b border-gray-200">
+                <ul class="flex flex-wrap -mb-px">
+                    <li class="mr-2">
+                        <button onclick="switchTab('productList')" class="inline-block p-4 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 tab-button active" data-tab="productList">Product List</button>
+                    </li>
+                    <li class="mr-2">
+                        <button onclick="switchTab('addProduct')" class="inline-block p-4 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 tab-button" data-tab="addProduct">Add Product</button>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Product List Tab -->
+            <div id="productList" class="tab-content">
+                <div class="bg-white shadow rounded-lg p-6">
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Brand</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Collection</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Price</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Discount</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200" id="productTableBody">
+                                <!-- Product rows will be inserted here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Add Product Tab -->
+            <div id="addProduct" class="tab-content hidden">
+                <div class="bg-white shadow rounded-lg p-6">
+                    <form id="productForm" class="space-y-6">
+                        <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">Product Name</label>
+                                <input type="text" name="name" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">Brand</label>
+                                <input type="text" name="brand" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">Collection</label>
+                                <select name="collection" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                                    <option value="Desktop">Desktop</option>
+                                    <option value="Laptop">Laptop</option>
+                                    <option value="Microsoft">Microsoft</option>
+                                    <option value="Pad">Pad</option>
+                                    <option value="UPS">UPS</option>
+                                    <option value="Server">Server</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">Price</label>
+                                <input type="number" name="price" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">Cost</label>
+                                <input type="number" name="cost" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">Discount Mode</label>
+                                <select name="discountMode" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                                    <option value="PERCENT">Percentage</option>
+                                    <option value="AMOUNT">Fixed Amount</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">Discount Value</label>
+                                <input type="number" name="discountValue" value="0" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">Inventory Status</label>
+                                <select name="inventory" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                                    <option value="InStock">In Stock</option>
+                                    <option value="OutOfStock">Out of Stock</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">Visibility</label>
+                                <select name="visible" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                                    <option value="true">Visible</option>
+                                    <option value="false">Hidden</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Description</label>
+                            <textarea name="description" rows="4" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"></textarea>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Product Images</label>
+                            <div class="mt-2 flex flex-col space-y-2">
+                                <input type="file" name="images" multiple accept="image/*" class="block w-full" onchange="previewImages(this, 'imagePreviewContainer')">
+                                <div id="imagePreviewContainer" class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+                                    <!-- Image previews will be inserted here -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-end">
+                            <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded">
+                                Add Product
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Edit Product Modal -->
+    <div id="editProductModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden overflow-y-auto h-full w-full">
+        <div class="relative top-20 mx-auto p-5 border w-4/5 shadow-lg rounded-md bg-white">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-lg font-medium">Edit Product</h3>
+                <button onclick="closeEditModal()" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form id="editProductForm" class="space-y-6">
+                <input type="hidden" name="editProductId">
+                <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Product Name</label>
+                        <input type="text" name="editName" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Brand</label>
+                        <input type="text" name="editBrand" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Collection</label>
+                        <select name="editCollection" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                            <option value="Desktop">Desktop</option>
+                            <option value="Laptop">Laptop</option>
+                            <option value="Microsoft">Microsoft</option>
+                            <option value="Pad">Pad</option>
+                            <option value="UPS">UPS</option>
+                            <option value="Server">Server</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Price</label>
+                        <input type="number" name="editPrice" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Cost</label>
+                        <input type="number" name="editCost" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Discount Mode</label>
+                        <select name="editDiscountMode" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                            <option value="PERCENT">Percentage</option>
+                            <option value="AMOUNT">Fixed Amount</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Discount Value</label>
+                        <input type="number" name="editDiscountValue" value="0" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Inventory Status</label>
+                        <select name="editInventory" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                            <option value="InStock">In Stock</option>
+                            <option value="OutOfStock">Out of Stock</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Visibility</label>
+                        <select name="editVisible" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                            <option value="true">Visible</option>
+                            <option value="false">Hidden</option>
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Description</label>
+                    <textarea name="editDescription" rows="4" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"></textarea>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Product Images</label>
+                    <div class="mt-2 flex flex-col space-y-2">
+                        <input type="file" name="editImages" multiple accept="image/*" class="block w-full" onchange="previewImages(this, 'editImagePreviewContainer')">
+                        <div id="editImagePreviewContainer" class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+                            <!-- Existing images will be shown here -->
+                        </div>
+                    </div>
+                </div>
+                <div class="flex justify-end">
+                    <button type="button" onclick="closeEditModal()" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded mr-2">
+                        Cancel
+                    </button>
+                    <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded">
+                        Save Changes
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Check login status
+        function checkLogin() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            if (!isLoggedIn) {
+                window.location.replace('index.html');
+            }
+        }
+
+        // Logout function
+        function logout() {
+            localStorage.setItem('isLoggedIn', 'false');
+            window.location.replace('index.html');
+        }
+
+        // Switch between tabs
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.add('hidden'));
+            document.getElementById(tabId).classList.remove('hidden');
+            
+            document.querySelectorAll('.tab-button').forEach(button => button.classList.remove('active'));
+            document.querySelector(`[data-tab="${tabId}"]`).classList.add('active');
+        }
+
+        // Load products from initialProducts array
+        function loadProducts() {
+            const tableBody = document.getElementById('productTableBody');
+            tableBody.innerHTML = '';
+
+            // Add debug logging
+            console.log('Loading products...');
+            
+            let products;
+            try {
+                // First try to get products from localStorage
+                const storedProducts = localStorage.getItem('products');
+                if (storedProducts) {
+                    products = JSON.parse(storedProducts);
+                    console.log('Loaded products from localStorage:', products);
+                } else {
+                    // If no products in localStorage, use initialProducts
+                    products = initialProducts;
+                    console.log('Using initial products:', products);
+                    // Store initial products in localStorage
+                    localStorage.setItem('products', JSON.stringify(products));
+                }
+            } catch (error) {
+                console.error('Error loading products:', error);
+                products = [];
+            }
+
+            if (!Array.isArray(products) || products.length === 0) {
+                // Show empty state
+                tableBody.innerHTML = `
+                    <tr>
+                        <td colspan="7" class="px-6 py-4 text-center text-gray-500">
+                            No products found. Click "Add Product" to add some products.
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+
+            products.forEach(product => {
+                const row = document.createElement('tr');
+                
+                const discountText = product.discountMode === 'PERCENT' 
+                    ? `${product.discountValue}%` 
+                    : `$${product.discountValue}`;
+
+                row.innerHTML = `
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm font-medium text-gray-900">${product.name}</div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm text-gray-900">${product.brand}</div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm text-gray-900">${product.collection}</div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm text-gray-900">$${product.price}</div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm text-gray-900">${product.discountValue > 0 ? discountText : 'No discount'}</div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full 
+                            ${product.inventory === 'InStock' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}">
+                            ${product.inventory}
+                        </span>
+                        ${!product.visible ? '<span class="ml-2 px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-100 text-gray-800">Hidden</span>' : ''}
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                        <button onclick="editProduct('${product.id}')" class="text-indigo-600 hover:text-indigo-900 mr-3">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <button onclick="deleteProduct('${product.id}')" class="text-red-600 hover:text-red-900">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        // Strip HTML tags from text
+        function stripHtmlTags(html) {
+            if (!html) return '';
+            return html.replace(/<\/?[^>]+(>|$)/g, '');
+        }
+
+        // Handle form submission
+        document.getElementById('productForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Get existing products to determine next ID
+            const products = JSON.parse(localStorage.getItem('products')) || initialProducts;
+            const maxId = products.reduce((max, product) => {
+                const currentId = parseInt(product.id);
+                return currentId > max ? currentId : max;
+            }, 0);
+            
+            // Generate next ID in 3-digit format
+            const nextId = String(maxId + 1).padStart(3, '0');
+            
+            const formData = new FormData(this);
+            const product = {
+                id: nextId,
+                name: formData.get('name'),
+                brand: formData.get('brand'),
+                collection: formData.get('collection'),
+                price: Number(formData.get('price')),
+                cost: Number(formData.get('cost')),
+                description: stripHtmlTags(formData.get('description')),
+                discountMode: formData.get('discountMode'),
+                discountValue: Number(formData.get('discountValue')),
+                inventory: formData.get('inventory'),
+                visible: formData.get('visible') === 'true'
+            };
+
+            // Handle image upload
+            const imageFiles = formData.getAll('images');
+            if (imageFiles.length > 0) {
+                const images = await handleMultipleImageUpload(imageFiles);
+                await saveImagesToStorage(product.id, images);
+            }
+
+            // Save product
+            products.push(product);
+            localStorage.setItem('products', JSON.stringify(products));
+
+            // Reset form and reload products
+            this.reset();
+            loadProducts();
+            switchTab('productList');
+        });
+
+        // Delete product
+        function deleteProduct(productId) {
+            if (confirm('Are you sure you want to delete this product?')) {
+                const products = JSON.parse(localStorage.getItem('products')) || initialProducts;
+                const updatedProducts = products.filter(p => p.id !== productId);
+                localStorage.setItem('products', JSON.stringify(updatedProducts));
+                deleteProductImages(productId);
+                loadProducts();
+            }
+        }
+
+        // Preview selected images
+        function previewImages(input, containerId) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = '';
+
+            if (input.files && input.files.length > 0) {
+                Array.from(input.files).forEach((file, index) => {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        const preview = document.createElement('div');
+                        preview.className = 'relative group';
+                        preview.innerHTML = `
+                            <img src="${e.target.result}" alt="Preview" class="w-full h-32 object-cover rounded-lg">
+                            <button type="button" onclick="removeImage(this, ${index})" class="absolute top-2 right-2 bg-red-500 text-white rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </button>
+                        `;
+                        container.appendChild(preview);
+                    };
+                    reader.readAsDataURL(file);
+                });
+            }
+        }
+
+        // Remove image from preview
+        function removeImage(button, index) {
+            const container = button.closest('.grid');
+            const input = container.previousElementSibling;
+            
+            // Create a new FileList without the removed image
+            const dt = new DataTransfer();
+            const { files } = input;
+            
+            for (let i = 0; i < files.length; i++) {
+                if (i !== index) {
+                    dt.items.add(files[i]);
+                }
+            }
+            
+            input.files = dt.files;
+            button.closest('.relative').remove();
+        }
+
+        // Show existing images in edit modal
+        function showExistingImages(productId) {
+            const container = document.getElementById('editImagePreviewContainer');
+            container.innerHTML = '';
+            
+            const images = JSON.parse(localStorage.getItem(`product_images_${productId}`)) || [];
+            images.forEach((imageData, index) => {
+                const preview = document.createElement('div');
+                preview.className = 'relative group';
+                preview.innerHTML = `
+                    <img src="${imageData}" alt="Preview" class="w-full h-32 object-cover rounded-lg">
+                    <button type="button" onclick="deleteExistingImage('${productId}', ${index})" class="absolute top-2 right-2 bg-red-500 text-white rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                `;
+                container.appendChild(preview);
+            });
+        }
+
+        // Delete existing image
+        function deleteExistingImage(productId, index) {
+            const images = JSON.parse(localStorage.getItem(`product_images_${productId}`)) || [];
+            images.splice(index, 1);
+            localStorage.setItem(`product_images_${productId}`, JSON.stringify(images));
+            showExistingImages(productId);
+        }
+
+        // Edit product
+        function editProduct(productId) {
+            const products = JSON.parse(localStorage.getItem('products')) || initialProducts;
+            const product = products.find(p => p.id === productId);
+            
+            if (product) {
+                document.querySelector('[name="editProductId"]').value = product.id;
+                document.querySelector('[name="editName"]').value = product.name;
+                document.querySelector('[name="editBrand"]').value = product.brand;
+                document.querySelector('[name="editCollection"]').value = product.collection;
+                document.querySelector('[name="editPrice"]').value = product.price;
+                document.querySelector('[name="editCost"]').value = product.cost;
+                document.querySelector('[name="editDiscountMode"]').value = product.discountMode;
+                document.querySelector('[name="editDiscountValue"]').value = product.discountValue;
+                document.querySelector('[name="editInventory"]').value = product.inventory;
+                document.querySelector('[name="editVisible"]').value = product.visible;
+                document.querySelector('[name="editDescription"]').value = stripHtmlTags(product.description);
+                
+                showExistingImages(productId);
+                document.getElementById('editProductModal').classList.remove('hidden');
+            }
+        }
+
+        // Close edit modal
+        function closeEditModal() {
+            document.getElementById('editProductModal').classList.add('hidden');
+            document.getElementById('editProductForm').reset();
+        }
+
+        // Handle edit form submission
+        document.getElementById('editProductForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const productId = formData.get('editProductId');
+            
+            // Get existing products
+            const products = JSON.parse(localStorage.getItem('products')) || initialProducts;
+            const productIndex = products.findIndex(p => p.id === productId);
+            
+            if (productIndex === -1) {
+                alert('Product not found');
+                return;
+            }
+
+            // Update product data
+            const updatedProduct = {
+                id: productId,
+                name: formData.get('editName'),
+                brand: formData.get('editBrand'),
+                collection: formData.get('editCollection'),
+                price: Number(formData.get('editPrice')),
+                cost: Number(formData.get('editCost')),
+                description: stripHtmlTags(formData.get('editDescription')),
+                discountMode: formData.get('editDiscountMode'),
+                discountValue: Number(formData.get('editDiscountValue')),
+                inventory: formData.get('editInventory'),
+                visible: formData.get('editVisible') === 'true'
+            };
+
+            // Handle image upload if new images are selected
+            const imageFiles = formData.getAll('editImages');
+            if (imageFiles.length > 0 && imageFiles[0].size > 0) {
+                const images = await handleMultipleImageUpload(imageFiles);
+                await saveImagesToStorage(productId, images);
+            }
+
+            // Update product in array
+            products[productIndex] = updatedProduct;
+            localStorage.setItem('products', JSON.stringify(products));
+
+            // Close modal, reset form and reload products
+            closeEditModal();
+            loadProducts();
+        });
+
+        // Initialize dashboard
+        document.addEventListener('DOMContentLoaded', () => {
+            checkLogin();
+            
+            // Clean up existing products' descriptions
+            const products = JSON.parse(localStorage.getItem('products')) || initialProducts;
+            const cleanedProducts = products.map(product => ({
+                ...product,
+                description: stripHtmlTags(product.description)
+            }));
+            localStorage.setItem('products', JSON.stringify(cleanedProducts));
+            
+            loadProducts();
+        });
+    </script>
+</body>
+</html> 
