@@ -16,9 +16,6 @@
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="styles/custom.css">
-
-    <!-- Load products data -->
-    <script src="admin/js/products.js"></script>
     
     <!-- Tailwind Config -->
     <script>
@@ -259,6 +256,8 @@
         </div>
     </div>
 
+    <!-- Load required scripts -->
+    <script src="admin/js/products.js"></script>
     <script src="admin/js/upload.js"></script>
     <script>
         // Add this at the beginning of your script section
@@ -269,55 +268,77 @@
 
         // Load and display products
         async function loadProducts() {
-            const products = JSON.parse(localStorage.getItem('products')) || initialProducts;
-            const visibleProducts = products.filter(p => p.visible);
-            await displayProducts(visibleProducts);
+            try {
+                // 等待 IndexedDB 初始化完成
+                await initDB();
+                
+                // 获取产品数据
+                const products = JSON.parse(localStorage.getItem('products')) || initialProducts;
+                if (!products) {
+                    console.error('No products data available');
+                    return;
+                }
+                
+                const visibleProducts = products.filter(p => p.visible);
+                await displayProducts(visibleProducts);
+            } catch (error) {
+                console.error('Error loading products:', error);
+            }
         }
 
         // Display products in grid
         async function displayProducts(products) {
+            if (!products || !Array.isArray(products)) {
+                console.error('Invalid products data:', products);
+                return;
+            }
+
             const grid = document.getElementById('productGrid');
             const productCount = document.getElementById('productCount');
             grid.innerHTML = '';
             productCount.textContent = `${products.length} 項產品`;
 
             for (const product of products) {
-                // Calculate discount price
-                let finalPrice = product.price;
-                if (product.discountValue > 0) {
-                    if (product.discountMode === 'PERCENT') {
-                        finalPrice = product.price * (1 - product.discountValue / 100);
-                    } else {
-                        finalPrice = product.price - product.discountValue;
+                try {
+                    // Calculate discount price
+                    let finalPrice = product.price;
+                    if (product.discountValue > 0) {
+                        if (product.discountMode === 'PERCENT') {
+                            finalPrice = product.price * (1 - product.discountValue / 100);
+                        } else {
+                            finalPrice = product.price - product.discountValue;
+                        }
                     }
-                }
 
-                // Get product images
-                const images = await getImagesFromStorage(product.id);
-                const imageUrl = images.length > 0 ? images[0] : 'images/no-image.jpg';
+                    // Get product images
+                    const images = await getImagesFromStorage(product.id);
+                    const imageUrl = images.length > 0 ? images[0] : 'images/no-image.jpg';
 
-                const productCard = document.createElement('div');
-                productCard.className = 'bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow cursor-pointer';
-                productCard.onclick = () => showProductModal(product);
-                productCard.innerHTML = `
-                    <div>
-                        <img src="${imageUrl}" 
-                             alt="${product.name}" 
-                             class="w-full h-48 object-cover"
-                             onerror="this.src='images/no-image.jpg'">
-                        <div class="p-4">
-                            <h3 class="text-lg font-semibold mb-2">${product.name}</h3>
-                            ${product.discountValue > 0 ? 
-                                `<div class="flex items-center space-x-2">
-                                    <span class="line-through text-gray-500">HK$${product.price.toFixed(2)}</span>
-                                    <span class="text-primary font-bold">HK$${finalPrice.toFixed(2)}</span>
-                                </div>` :
-                                `<p class="text-primary font-bold">HK$${product.price.toFixed(2)}</p>`
-                            }
+                    const productCard = document.createElement('div');
+                    productCard.className = 'bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow cursor-pointer';
+                    productCard.onclick = () => showProductModal(product);
+                    productCard.innerHTML = `
+                        <div>
+                            <img src="${imageUrl}" 
+                                 alt="${product.name}" 
+                                 class="w-full h-48 object-cover"
+                                 onerror="this.src='images/no-image.jpg'">
+                            <div class="p-4">
+                                <h3 class="text-lg font-semibold mb-2">${product.name}</h3>
+                                ${product.discountValue > 0 ? 
+                                    `<div class="flex items-center space-x-2">
+                                        <span class="line-through text-gray-500">HK$${product.price.toFixed(2)}</span>
+                                        <span class="text-primary font-bold">HK$${finalPrice.toFixed(2)}</span>
+                                    </div>` :
+                                    `<p class="text-primary font-bold">HK$${product.price.toFixed(2)}</p>`
+                                }
+                            </div>
                         </div>
-                    </div>
-                `;
-                grid.appendChild(productCard);
+                    `;
+                    grid.appendChild(productCard);
+                } catch (error) {
+                    console.error('Error displaying product:', product.id, error);
+                }
             }
         }
 
@@ -412,7 +433,10 @@
         }
 
         // Initialize page
-        document.addEventListener('DOMContentLoaded', loadProducts);
+        window.addEventListener('load', function() {
+            // 确保在页面完全加载后再初始化
+            setTimeout(loadProducts, 100);
+        });
     </script>
 </body>
 </html> 
