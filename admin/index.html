@@ -81,7 +81,7 @@
             
             if (username === 'smile' && password === 'smilelovekeith') {
                 localStorage.setItem('isLoggedIn', 'true');
-                window.location.replace('dashboard.html');
+                window.location.href = 'dashboard.html';
             } else {
                 errorMessage.classList.remove('hidden');
             }
