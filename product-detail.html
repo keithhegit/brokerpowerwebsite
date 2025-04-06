@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DELL Latitude 3550 Laptop - BrokerPower</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles/custom.css">
+    
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0F172A',
+                        secondary: '#1E293B',
+                        accent: '#3B82F6',
+                        light: '#F8FAFC',
+                        dark: '#0F172A',
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans antialiased bg-light text-dark">
+    <!-- Header -->
+    <header class="fixed w-full bg-white shadow-sm z-50">
+        <nav class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <a href="index.html" class="text-2xl font-bold text-primary">BrokerPower</a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-gray-600 hover:text-primary transition flex-shrink-0 w-24 text-center">Home</a>
+                    <a href="about.html" class="text-gray-600 hover:text-primary transition flex-shrink-0 w-24 text-center">About</a>
+                    <a href="service.html" class="text-gray-600 hover:text-primary transition flex-shrink-0 w-24 text-center">Service</a>
+                    <a href="partners.html" class="text-gray-600 hover:text-primary transition flex-shrink-0 w-24 text-center">Partners</a>
+                    <a href="products.html" class="text-primary font-medium subpixel-antialiased flex-shrink-0 w-24 text-center">Products</a>
+                    <a href="contact.html" class="text-gray-600 hover:text-primary transition flex-shrink-0 w-24 text-center">Contact</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button class="md:hidden">
+                        <i class="fas fa-bars text-2xl text-gray-600"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Breadcrumb -->
+    <section class="pt-32 pb-4 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center text-sm text-gray-600">
+                <a href="index.html" class="hover:text-primary">首頁</a>
+                <span class="mx-2">/</span>
+                <a href="products.html" class="hover:text-primary">所有產品</a>
+                <span class="mx-2">/</span>
+                <span class="text-primary">DELL Latitude 3550 Laptop, 15"inch</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Detail Section -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Product Images -->
+                <div class="space-y-4">
+                    <div class="aspect-w-16 aspect-h-12 bg-gray-100 rounded-lg overflow-hidden">
+                        <img id="mainImage" src="" alt="" class="w-full h-full object-contain">
+                    </div>
+                    <div id="thumbnails" class="grid grid-cols-4 gap-4">
+                    </div>
+                </div>
+
+                <!-- Product Info -->
+                <div>
+                    <h1 id="productTitle" class="text-3xl font-bold text-primary mb-4"></h1>
+                    <p id="productPrice" class="text-2xl font-bold text-primary mb-8"></p>
+                    
+                    <div class="prose prose-lg text-gray-600 mb-8">
+                        <p id="productDescription"></p>
+                    </div>
+
+                    <!-- Navigation Buttons -->
+                    <div class="flex justify-between items-center mt-12">
+                        <a id="prevProduct" href="#" class="flex items-center text-gray-600 hover:text-primary transition">
+                            <i class="fas fa-chevron-left mr-2"></i>
+                            上一頁
+                        </a>
+                        <a id="nextProduct" href="#" class="flex items-center text-gray-600 hover:text-primary transition">
+                            下一頁
+                            <i class="fas fa-chevron-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Broker Power</h3>
+                    <p class="text-gray-400">Your Trusted IT Solution Provider</p>
+                    <p class="text-gray-400 mt-2">T: 852-31106138</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition">Home</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-white transition">About</a></li>
+                        <li><a href="service.html" class="text-gray-400 hover:text-white transition">Service</a></li>
+                        <li><a href="partners.html" class="text-gray-400 hover:text-white transition">Partners</a></li>
+                        <li><a href="products.html" class="text-gray-400 hover:text-white transition">Products</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contact</h4>
+                    <ul class="space-y-2">
+                        <li class="text-gray-400">PORTION 1 OF UNIT NO.721A</li>
+                        <li class="text-gray-400">7/F,STAR HOUSE</li>
+                        <li class="text-gray-400">TSIM SHA TSUI, HONG KONG</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Follow Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2023 by Broker Power Co Ltd</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Add this before the closing body tag -->
+    <script>
+        // Product data
+        const products = {
+            'optiplex-7020-plus': {
+                title: 'OptiPlex 7020Micro Form Factor Plus',
+                price: 'HK$7,660.00',
+                description: 'OptiPlex 7020 Micro Form Factor Plus desktop computer with advanced features.',
+                images: ['images/optiplex-7020.jpg'],
+                category: 'desktop'
+            },
+            'optiplex-7020': {
+                title: 'OptiPlex 7020Micro Form Factor',
+                price: 'HK$5,890.00',
+                description: 'OptiPlex 7020 Micro Form Factor desktop computer.',
+                images: ['images/optiplex-7020.jpg'],
+                category: 'desktop'
+            },
+            'latitude-3550': {
+                title: 'DELL Latitude 3550 Laptop, 15"inch',
+                price: 'HK$7,399.00',
+                description: '15.6" FHD (1920x1080) Non-Touch, AG, IPS, 250 nits, FHD Cam, WLAN, Intel® Core™ Ultra 5 125U (12 MB cache, 12 cores, 14 threads, up to 4.3 GHz Turbo) , Windows 11 Pro , Intel® Graphics , 16 GB DDR5 , 512 GB SSD ,3yrs pro support NBD onsite service.',
+                images: ['images/latitude-3550.jpg', 'images/latitude-3550-2.jpg'],
+                category: 'laptop'
+            },
+            'surface-pro-9': {
+                title: 'Surface Pro 9',
+                price: 'HK$13,588.00',
+                oldPrice: 'HK$13,988.00',
+                description: 'Microsoft Surface Pro 9 tablet with advanced features.',
+                images: ['images/surface-pro-9.jpg'],
+                category: 'microsoft'
+            }
+        };
+
+        // Get product ID from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = urlParams.get('id');
+
+        // Get product data
+        const product = products[productId];
+
+        if (product) {
+            // Update page content
+            document.getElementById('productTitle').textContent = product.title;
+            document.getElementById('productPrice').textContent = product.price;
+            document.getElementById('productDescription').textContent = product.description;
+            document.getElementById('mainImage').src = product.images[0];
+            document.getElementById('mainImage').alt = product.title;
+
+            // Update thumbnails
+            const thumbnailsContainer = document.getElementById('thumbnails');
+            thumbnailsContainer.innerHTML = '';
+            product.images.forEach(image => {
+                const div = document.createElement('div');
+                div.className = 'aspect-w-1 aspect-h-1 bg-gray-100 rounded-lg overflow-hidden cursor-pointer';
+                div.innerHTML = `<img src="${image}" alt="Thumbnail" class="w-full h-full object-cover">`;
+                thumbnailsContainer.appendChild(div);
+            });
+
+            // Update breadcrumb
+            const breadcrumbTitle = document.querySelector('.text-primary:last-child');
+            breadcrumbTitle.textContent = product.title;
+
+            // Update navigation links
+            const productIds = Object.keys(products);
+            const currentIndex = productIds.indexOf(productId);
+            
+            const prevProduct = document.getElementById('prevProduct');
+            const nextProduct = document.getElementById('nextProduct');
+
+            if (currentIndex > 0) {
+                prevProduct.href = `product-detail.html?id=${productIds[currentIndex - 1]}`;
+                prevProduct.style.visibility = 'visible';
+            } else {
+                prevProduct.style.visibility = 'hidden';
+            }
+
+            if (currentIndex < productIds.length - 1) {
+                nextProduct.href = `product-detail.html?id=${productIds[currentIndex + 1]}`;
+                nextProduct.style.visibility = 'visible';
+            } else {
+                nextProduct.style.visibility = 'hidden';
+            }
+        }
+    </script>
+</body>
+</html> 

@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - BrokerPower</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles/custom.css">
+    
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0F172A',
+                        secondary: '#1E293B',
+                        accent: '#3B82F6',
+                        light: '#F8FAFC',
+                        dark: '#0F172A',
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans antialiased bg-light text-dark">
+    <!-- Header -->
+    <header class="fixed w-full bg-white shadow-sm z-50">
+        <nav class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <a href="index.html" class="text-2xl font-bold text-primary">BrokerPower</a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-gray-600 hover:text-primary transition flex-shrink-0 w-24 text-center">Home</a>
+                    <a href="about.html" class="text-gray-600 hover:text-primary transition flex-shrink-0 w-24 text-center">About</a>
+                    <a href="service.html" class="text-gray-600 hover:text-primary transition flex-shrink-0 w-24 text-center">Service</a>
+                    <a href="partners.html" class="text-gray-600 hover:text-primary transition flex-shrink-0 w-24 text-center">Partners</a>
+                    <a href="products.html" class="text-primary font-medium subpixel-antialiased flex-shrink-0 w-24 text-center">Products</a>
+                    <a href="contact.html" class="text-gray-600 hover:text-primary transition flex-shrink-0 w-24 text-center">Contact</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button class="md:hidden">
+                        <i class="fas fa-bars text-2xl text-gray-600"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-16 bg-gradient-to-r from-blue-50 to-blue-100">
+        <div class="container mx-auto px-4">
+            <div class="text-center">
+                <h1 class="text-4xl md:text-5xl font-bold text-primary mb-6">所有產品</h1>
+                <div class="w-24 h-1 bg-primary mx-auto mb-8"></div>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    我們提供優質的IT解決方案和產品，滿足您的所有需求。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <!-- Sidebar -->
+                <div class="md:col-span-1">
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <h2 class="text-lg font-semibold mb-4">瀏覽方式</h2>
+                        <ul class="space-y-2">
+                            <li>
+                                <a href="products.html" class="text-primary font-medium">所有產品</a>
+                            </li>
+                            <li>
+                                <a href="products.html?category=desktop" class="text-gray-600 hover:text-primary">Desktop</a>
+                            </li>
+                            <li>
+                                <a href="products.html?category=laptop" class="text-gray-600 hover:text-primary">Laptop</a>
+                            </li>
+                            <li>
+                                <a href="products.html?category=microsoft" class="text-gray-600 hover:text-primary">Microsoft</a>
+                            </li>
+                            <li>
+                                <a href="products.html?category=pad" class="text-gray-600 hover:text-primary">Pad</a>
+                            </li>
+                            <li>
+                                <a href="products.html?category=server" class="text-gray-600 hover:text-primary">Server</a>
+                            </li>
+                            <li>
+                                <a href="products.html?category=ups" class="text-gray-600 hover:text-primary">UPS</a>
+                            </li>
+                        </ul>
+
+                        <div class="mt-8">
+                            <h2 class="text-lg font-semibold mb-4">篩選方式</h2>
+                            <div class="space-y-4">
+                                <div>
+                                    <label class="text-sm text-gray-600">價格</label>
+                                    <div class="flex items-center space-x-2 mt-2">
+                                        <input type="text" placeholder="HK$" class="w-24 px-2 py-1 border rounded">
+                                        <span>-</span>
+                                        <input type="text" placeholder="HK$" class="w-24 px-2 py-1 border rounded">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Grid -->
+                <div class="md:col-span-3">
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <div class="flex justify-between items-center mb-6">
+                            <h1 class="text-2xl font-bold">所有產品</h1>
+                            <div class="flex items-center space-x-4">
+                                <span class="text-sm text-gray-600">30 項產品</span>
+                                <select class="border rounded px-2 py-1">
+                                    <option>推薦</option>
+                                    <option>價格: 低到高</option>
+                                    <option>價格: 高到低</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Product Grid -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <!-- Desktop Products -->
+                            <div class="product-card" data-category="desktop">
+                                <a href="product-detail.html?id=optiplex-7020-plus" class="block">
+                                    <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                                        <img src="images/optiplex-7020.jpg" alt="OptiPlex 7020" class="w-full h-48 object-cover">
+                                        <div class="p-4">
+                                            <h3 class="text-lg font-semibold mb-2">OptiPlex 7020Micro Form Factor Plus</h3>
+                                            <p class="text-primary font-bold">HK$7,660.00</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="product-card" data-category="desktop">
+                                <a href="product-detail.html?id=optiplex-7020" class="block">
+                                    <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                                        <img src="images/optiplex-7020.jpg" alt="OptiPlex 7020" class="w-full h-48 object-cover">
+                                        <div class="p-4">
+                                            <h3 class="text-lg font-semibold mb-2">OptiPlex 7020Micro Form Factor</h3>
+                                            <p class="text-primary font-bold">HK$5,890.00</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <!-- Laptop Products -->
+                            <div class="product-card" data-category="laptop">
+                                <a href="product-detail.html?id=latitude-3550" class="block">
+                                    <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                                        <img src="images/latitude-3550.jpg" alt="Latitude 3550" class="w-full h-48 object-cover">
+                                        <div class="p-4">
+                                            <h3 class="text-lg font-semibold mb-2">DELL Latitude 3550 Laptop, 15"inch</h3>
+                                            <p class="text-primary font-bold">HK$7,399.00</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <!-- Microsoft Products -->
+                            <div class="product-card" data-category="microsoft">
+                                <a href="product-detail.html?id=surface-pro-9" class="block">
+                                    <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                                        <img src="images/surface-pro-9.jpg" alt="Surface Pro 9" class="w-full h-48 object-cover">
+                                        <div class="p-4">
+                                            <h3 class="text-lg font-semibold mb-2">Surface Pro 9</h3>
+                                            <div class="flex items-center space-x-2">
+                                                <span class="line-through text-gray-500">HK$13,988.00</span>
+                                                <span class="text-primary font-bold">HK$13,588.00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <!-- More products... -->
+                        </div>
+
+                        <!-- Pagination -->
+                        <div class="mt-8 flex justify-center">
+                            <nav class="flex items-center space-x-2">
+                                <a href="#" class="px-3 py-1 rounded border text-gray-600 hover:bg-primary hover:text-white">1</a>
+                                <a href="#" class="px-3 py-1 rounded border text-gray-600 hover:bg-primary hover:text-white">2</a>
+                                <a href="#" class="px-3 py-1 rounded border text-gray-600 hover:bg-primary hover:text-white">3</a>
+                                <span class="px-3 py-1">...</span>
+                                <a href="#" class="px-3 py-1 rounded border text-gray-600 hover:bg-primary hover:text-white">10</a>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Broker Power</h3>
+                    <p class="text-gray-400">Your Trusted IT Solution Provider</p>
+                    <p class="text-gray-400 mt-2">T: 852-31106138</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition">Home</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-white transition">About</a></li>
+                        <li><a href="service.html" class="text-gray-400 hover:text-white transition">Service</a></li>
+                        <li><a href="partners.html" class="text-gray-400 hover:text-white transition">Partners</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contact</h4>
+                    <ul class="space-y-2">
+                        <li class="text-gray-400">PORTION 1 OF UNIT NO.721A</li>
+                        <li class="text-gray-400">7/F,STAR HOUSE</li>
+                        <li class="text-gray-400">TSIM SHA TSUI, HONG KONG</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Follow Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2023 by Broker Power Co Ltd</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for category filtering -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get the current category from URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            const currentCategory = urlParams.get('category');
+            
+            // Get all category links and product cards
+            const categoryLinks = document.querySelectorAll('a[href^="products.html"]');
+            const productCards = document.querySelectorAll('.product-card');
+            const categoryTitle = document.querySelector('h1');
+            
+            // If there's a category parameter, update the UI
+            if (currentCategory) {
+                // Update title
+                categoryTitle.textContent = currentCategory.charAt(0).toUpperCase() + currentCategory.slice(1);
+                
+                // Update active link
+                categoryLinks.forEach(link => {
+                    if (link.href.includes(currentCategory)) {
+                        link.classList.add('text-primary', 'font-medium');
+                        link.classList.remove('text-gray-600');
+                    } else {
+                        link.classList.remove('text-primary', 'font-medium');
+                        link.classList.add('text-gray-600');
+                    }
+                });
+                
+                // Filter products
+                productCards.forEach(card => {
+                    if (card.dataset.category === currentCategory) {
+                        card.style.display = '';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html> 
