@@ -259,6 +259,7 @@
         </div>
     </div>
 
+    <script src="admin/js/upload.js"></script>
     <script>
         // Add this at the beginning of your script section
         function toggleMobileMenu() {
@@ -267,20 +268,20 @@
         }
 
         // Load and display products
-        function loadProducts() {
+        async function loadProducts() {
             const products = JSON.parse(localStorage.getItem('products')) || initialProducts;
             const visibleProducts = products.filter(p => p.visible);
-            displayProducts(visibleProducts);
+            await displayProducts(visibleProducts);
         }
 
         // Display products in grid
-        function displayProducts(products) {
+        async function displayProducts(products) {
             const grid = document.getElementById('productGrid');
             const productCount = document.getElementById('productCount');
             grid.innerHTML = '';
             productCount.textContent = `${products.length} 項產品`;
 
-            products.forEach(product => {
+            for (const product of products) {
                 // Calculate discount price
                 let finalPrice = product.price;
                 if (product.discountValue > 0) {
@@ -291,12 +292,16 @@
                     }
                 }
 
+                // Get product images
+                const images = await getImagesFromStorage(product.id);
+                const imageUrl = images.length > 0 ? images[0] : 'images/no-image.jpg';
+
                 const productCard = document.createElement('div');
                 productCard.className = 'bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow cursor-pointer';
                 productCard.onclick = () => showProductModal(product);
                 productCard.innerHTML = `
                     <div>
-                        <img src="${getProductImage(product.id)}" 
+                        <img src="${imageUrl}" 
                              alt="${product.name}" 
                              class="w-full h-48 object-cover"
                              onerror="this.src='images/no-image.jpg'">
@@ -313,7 +318,7 @@
                     </div>
                 `;
                 grid.appendChild(productCard);
-            });
+            }
         }
 
         // Filter products by collection
@@ -362,7 +367,7 @@
         }
 
         // Show product modal
-        function showProductModal(product) {
+        async function showProductModal(product) {
             const modal = document.getElementById('productModal');
             document.getElementById('modalTitle').textContent = product.name;
             document.getElementById('modalDescription').textContent = stripHtmlTags(product.description);
@@ -386,7 +391,12 @@
             }
             
             document.getElementById('modalInventory').textContent = product.inventory === 'InStock' ? '現貨' : '缺貨';
-            document.getElementById('modalImage').src = getProductImage(product.id);
+            
+            // Get product images from IndexedDB
+            const images = await getImagesFromStorage(product.id);
+            const imageUrl = images.length > 0 ? images[0] : 'images/no-image.jpg';
+            document.getElementById('modalImage').src = imageUrl;
+            
             modal.classList.remove('hidden');
         }
 
@@ -399,17 +409,6 @@
         // Close product modal
         function closeProductModal() {
             document.getElementById('productModal').classList.add('hidden');
-        }
-
-        // Get product image with fallback
-        function getProductImage(productId) {
-            try {
-                const images = JSON.parse(localStorage.getItem(`product_images_${productId}`)) || [];
-                return images.length > 0 ? images[0] : 'images/no-image.jpg';
-            } catch (error) {
-                console.error('Error loading product image:', error);
-                return 'images/no-image.jpg';
-            }
         }
 
         // Initialize page
