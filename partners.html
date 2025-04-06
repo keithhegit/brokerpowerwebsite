@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Partners - BrokerPower</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles/custom.css">
+    
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0F172A',
+                        secondary: '#1E293B',
+                        accent: '#3B82F6',
+                        light: '#F8FAFC',
+                        dark: '#0F172A',
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans antialiased bg-light text-dark">
+    <!-- Header -->
+    <header class="fixed w-full bg-white shadow-sm z-50">
+        <nav class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <a href="index.html" class="text-2xl font-bold text-primary">BrokerPower</a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-gray-600 hover:text-primary transition flex-shrink-0 w-24 text-center">Home</a>
+                    <a href="about.html" class="text-gray-600 hover:text-primary transition flex-shrink-0 w-24 text-center">About</a>
+                    <a href="service.html" class="text-gray-600 hover:text-primary transition flex-shrink-0 w-24 text-center">Service</a>
+                    <a href="partners.html" class="text-primary font-medium subpixel-antialiased flex-shrink-0 w-24 text-center">Partners</a>
+                    <a href="products.html" class="text-gray-600 hover:text-primary transition flex-shrink-0 w-24 text-center">Products</a>
+                    <a href="contact.html" class="text-gray-600 hover:text-primary transition flex-shrink-0 w-24 text-center">Contact</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button class="md:hidden">
+                        <i class="fas fa-bars text-2xl text-gray-600"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-16 bg-gradient-to-r from-blue-50 to-blue-100">
+        <div class="container mx-auto px-4">
+            <div class="text-center">
+                <h1 class="text-4xl md:text-5xl font-bold text-primary mb-6">Our Partners</h1>
+                <div class="w-24 h-1 bg-primary mx-auto mb-8"></div>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    We collaborate with industry-leading technology providers to deliver the best solutions for our clients.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Grid Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 items-center justify-items-center">
+                <!-- HPE -->
+                <div class="w-full max-w-[200px] p-6 bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                    <img src="images/HPE.png" alt="HPE" class="w-full h-auto">
+                </div>
+                
+                <!-- Aruba -->
+                <div class="w-full max-w-[200px] p-6 bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                    <img src="images/Aruba.png" alt="Aruba" class="w-full h-auto">
+                </div>
+                
+                <!-- Additional Partner Logos -->
+                <div class="w-full max-w-[200px] p-6 bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                    <img src="images/pngwing.com (12).png" alt="Partner" class="w-full h-auto">
+                </div>
+                
+                <div class="w-full max-w-[200px] p-6 bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                    <img src="images/pngwing.com (16).png" alt="Partner" class="w-full h-auto">
+                </div>
+                
+                <div class="w-full max-w-[200px] p-6 bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                    <img src="images/pngwing.com (15).png" alt="Partner" class="w-full h-auto">
+                </div>
+                
+                <div class="w-full max-w-[200px] p-6 bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                    <img src="images/pngwing.com (9).png" alt="Partner" class="w-full h-auto">
+                </div>
+                
+                <div class="w-full max-w-[200px] p-6 bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                    <img src="images/pngwing.com (3).png" alt="Partner" class="w-full h-auto">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partnership Benefits Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Why Partner With Us?</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-lg shadow-lg">
+                    <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-handshake text-primary text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Strategic Alliance</h3>
+                    <p class="text-gray-600">
+                        Join forces with a trusted IT solution provider to expand market reach and deliver comprehensive solutions.
+                    </p>
+                </div>
+
+                <div class="bg-white p-8 rounded-lg shadow-lg">
+                    <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-chart-line text-primary text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Growth Opportunities</h3>
+                    <p class="text-gray-600">
+                        Access new markets and customers while leveraging our expertise and established network.
+                    </p>
+                </div>
+
+                <div class="bg-white p-8 rounded-lg shadow-lg">
+                    <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-users text-primary text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Collaborative Success</h3>
+                    <p class="text-gray-600">
+                        Work together to deliver innovative solutions and exceptional service to our clients.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact CTA Section -->
+    <section class="py-16 bg-primary">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold text-white mb-6">Become Our Partner</h2>
+            <p class="text-white/90 mb-8 max-w-2xl mx-auto">
+                Interested in partnering with BrokerPower? Contact us today to explore partnership opportunities.
+            </p>
+            <a href="#" class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-md text-primary bg-white hover:bg-gray-100 transition">
+                Contact Us Today
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Broker Power</h3>
+                    <p class="text-gray-400">Your Trusted IT Solution Provider</p>
+                    <p class="text-gray-400 mt-2">T: 852-31106138</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition">Home</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-white transition">About</a></li>
+                        <li><a href="service.html" class="text-gray-400 hover:text-white transition">Service</a></li>
+                        <li><a href="partners.html" class="text-gray-400 hover:text-white transition">Partners</a></li>
+                        <li><a href="products.html" class="text-gray-400 hover:text-white transition">Products</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contact</h4>
+                    <ul class="space-y-2">
+                        <li class="text-gray-400">123 Business Street</li>
+                        <li class="text-gray-400">City, State 12345</li>
+                        <li class="text-gray-400">contact@brokerpower.com</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Follow Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2023 by Broker Power Co Ltd</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html> 
