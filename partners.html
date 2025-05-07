@@ -45,7 +45,9 @@
                 <div class="flex justify-between h-16">
                     <div class="flex">
                         <div class="flex-shrink-0 flex items-center">
-                            <a href="index.html" class="text-xl font-bold">BrokerPower</a>
+                            <a href="index.html" class="flex items-center">
+                                <img src="images/logo.png" alt="BrokerPower Logo" class="h-10 w-auto mr-2" style="max-height:40px;">
+                            </a>
                         </div>
                         <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
                             <a href="index.html" class="text-gray-500 hover:text-gray-700 px-3 py-2 rounded-md text-sm font-medium">Home</a>
@@ -97,36 +99,66 @@
     <!-- Partners Grid Section -->
     <section class="py-16 bg-white">
         <div class="container mx-auto px-4">
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 items-center justify-items-center">
-                <!-- HPE -->
-                <div class="w-full max-w-[200px] p-6 bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow">
-                    <img src="images/HPE.png" alt="HPE" class="w-full h-auto">
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center justify-items-center">
+                <!-- Partner Logos -->
+                <template id="partner-logo-template">
+                    <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow transform hover:scale-105 flex items-center justify-center p-6 h-32 w-full">
+                        <img src="" alt="Partner Logo" class="max-h-20 max-w-full object-contain" loading="lazy">
+                    </div>
+                </template>
+                <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow transform hover:scale-105 flex items-center justify-center p-6 h-32 w-full">
+                    <img src="images/01.png" alt="Partner 1" class="max-h-20 max-w-full object-contain" loading="lazy">
                 </div>
-                
-                <!-- Aruba -->
-                <div class="w-full max-w-[200px] p-6 bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow">
-                    <img src="images/Aruba.png" alt="Aruba" class="w-full h-auto">
+                <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow transform hover:scale-105 flex items-center justify-center p-6 h-32 w-full">
+                    <img src="images/02.png" alt="Partner 2" class="max-h-20 max-w-full object-contain" loading="lazy">
                 </div>
-                
-                <!-- Additional Partner Logos -->
-                <div class="w-full max-w-[200px] p-6 bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow">
-                    <img src="images/pngwing.com (12).png" alt="Partner" class="w-full h-auto">
+                <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow transform hover:scale-105 flex items-center justify-center p-6 h-32 w-full">
+                    <img src="images/03.png" alt="Partner 3" class="max-h-20 max-w-full object-contain" loading="lazy">
                 </div>
-                
-                <div class="w-full max-w-[200px] p-6 bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow">
-                    <img src="images/pngwing.com (16).png" alt="Partner" class="w-full h-auto">
+                <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow transform hover:scale-105 flex items-center justify-center p-6 h-32 w-full">
+                    <img src="images/04.png" alt="Partner 4" class="max-h-20 max-w-full object-contain" loading="lazy">
                 </div>
-                
-                <div class="w-full max-w-[200px] p-6 bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow">
-                    <img src="images/pngwing.com (15).png" alt="Partner" class="w-full h-auto">
+                <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow transform hover:scale-105 flex items-center justify-center p-6 h-32 w-full">
+                    <img src="images/05.png" alt="Partner 5" class="max-h-20 max-w-full object-contain" loading="lazy">
                 </div>
-                
-                <div class="w-full max-w-[200px] p-6 bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow">
-                    <img src="images/pngwing.com (9).png" alt="Partner" class="w-full h-auto">
+                <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow transform hover:scale-105 flex items-center justify-center p-6 h-32 w-full">
+                    <img src="images/06.png" alt="Partner 6" class="max-h-20 max-w-full object-contain" loading="lazy">
                 </div>
-                
-                <div class="w-full max-w-[200px] p-6 bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow">
-                    <img src="images/pngwing.com (3).png" alt="Partner" class="w-full h-auto">
+                <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow transform hover:scale-105 flex items-center justify-center p-6 h-32 w-full">
+                    <img src="images/07.png" alt="Partner 7" class="max-h-20 max-w-full object-contain" loading="lazy">
+                </div>
+                <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow transform hover:scale-105 flex items-center justify-center p-6 h-32 w-full">
+                    <img src="images/08.png" alt="Partner 8" class="max-h-20 max-w-full object-contain" loading="lazy">
+                </div>
+                <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow transform hover:scale-105 flex items-center justify-center p-6 h-32 w-full">
+                    <img src="images/09.png" alt="Partner 9" class="max-h-20 max-w-full object-contain" loading="lazy">
+                </div>
+                <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow transform hover:scale-105 flex items-center justify-center p-6 h-32 w-full">
+                    <img src="images/10.png" alt="Partner 10" class="max-h-20 max-w-full object-contain" loading="lazy">
+                </div>
+                <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow transform hover:scale-105 flex items-center justify-center p-6 h-32 w-full">
+                    <img src="images/11.png" alt="Partner 11" class="max-h-20 max-w-full object-contain" loading="lazy">
+                </div>
+                <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow transform hover:scale-105 flex items-center justify-center p-6 h-32 w-full">
+                    <img src="images/12.png" alt="Partner 12" class="max-h-20 max-w-full object-contain" loading="lazy">
+                </div>
+                <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow transform hover:scale-105 flex items-center justify-center p-6 h-32 w-full">
+                    <img src="images/13.png" alt="Partner 13" class="max-h-20 max-w-full object-contain" loading="lazy">
+                </div>
+                <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow transform hover:scale-105 flex items-center justify-center p-6 h-32 w-full">
+                    <img src="images/14.png" alt="Partner 14" class="max-h-20 max-w-full object-contain" loading="lazy">
+                </div>
+                <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow transform hover:scale-105 flex items-center justify-center p-6 h-32 w-full">
+                    <img src="images/15.png" alt="Partner 15" class="max-h-20 max-w-full object-contain" loading="lazy">
+                </div>
+                <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow transform hover:scale-105 flex items-center justify-center p-6 h-32 w-full">
+                    <img src="images/16.png" alt="Partner 16" class="max-h-20 max-w-full object-contain" loading="lazy">
+                </div>
+                <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow transform hover:scale-105 flex items-center justify-center p-6 h-32 w-full">
+                    <img src="images/17.png" alt="Partner 17" class="max-h-20 max-w-full object-contain" loading="lazy">
+                </div>
+                <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow transform hover:scale-105 flex items-center justify-center p-6 h-32 w-full">
+                    <img src="images/18.png" alt="Partner 18" class="max-h-20 max-w-full object-contain" loading="lazy">
                 </div>
             </div>
         </div>
